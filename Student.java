@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+class Student {
+    String usn;
+    String name;
+    int[] credits;
+    int[] marks;
+    int n;  // number of subjects
+
+    // Method to accept student details
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter USN: ");
+        usn = sc.nextLine();
+        System.out.print("Enter Name: ");
+        name = sc.nextLine();
+
+        System.out.print("Enter number of subjects: ");
+        n = sc.nextInt();
+
+        credits = new int[n];
+        marks = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter credits and marks for subject " + (i + 1) + ": ");
+            System.out.print("Credits: ");
+            credits[i] = sc.nextInt();
+            System.out.print("Marks: ");
+            marks[i] = sc.nextInt();
+        }
+    }
+
+    // Method to calculate grade points from marks
+    int gradeFromMarks(int marks) {
+        if (marks >= 90)
+            return 10;
+        else if (marks >= 80)
+            return 9;
+        else if (marks >= 70)
+            return 8;
+        else if (marks >= 60)
+            return 7;
+        else if (marks >= 50)
+            return 6;
+        else if (marks >= 45)
+            return 5;
+        else if (marks >= 40)
+            return 4;
+        else
+            return 0;
+    }
+
+    // Method to calculate SGPA
+    double calculateSGPA() {
+        int totalCredits = 0;
+        int totalCreditPoints = 0;
+
+        for (int i = 0; i < n; i++) {
+            int grade = gradeFromMarks(marks[i]);
+            totalCredits += credits[i];
+            totalCreditPoints += grade * credits[i];
+        }
+
+        return (double) totalCreditPoints / totalCredits;
+    }
+
+    // Method to display student details and SGPA
+    void display() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("USN: " + usn);
+        System.out.println("Name: " + name);
+        System.out.println("Subjects: " + n);
+
+        System.out.println("Credits\tMarks");
+        for (int i = 0; i < n; i++) {
+            System.out.println(credits[i] + "\t" + marks[i]);
+        }
+
+        System.out.printf("SGPA: %.2f\n", calculateSGPA());
+    }
+
+    // Main method to test the program
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.accept();
+        s.display();
+    }
+}
