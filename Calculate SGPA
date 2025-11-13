@@ -86,3 +86,30 @@ class Student {
         s.display();
     }
 }
+
+
+--------OUTPUT-----------
+
+Enter USN: 1RV22CS001
+Enter Name: Rahul
+Enter number of subjects: 3
+Enter credits and marks for subject 1: 
+Credits: 4
+Marks: 85
+Enter credits and marks for subject 2: 
+Credits: 3
+Marks: 75
+Enter credits and marks for subject 3: 
+Credits: 2
+Marks: 65
+
+--- Student Details ---
+USN: 1RV22CS001
+Name: Rahul
+Subjects: 3
+Credits Marks
+4       85
+3       75
+2       65
+SGPA: 8.11
+
